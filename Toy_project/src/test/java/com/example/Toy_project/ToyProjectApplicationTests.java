@@ -7,7 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 class ToyProjectApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void insert쿼리테스트() {
+		EnvironRepositoryImp environRepositoryImp = new EnvironRepositoryImp();
+		environRepositoryImp.saveEnvironment(null);
 	}
 
 }
