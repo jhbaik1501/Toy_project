@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Random;
 
-@Repository
+//@Repository
 public class DataRepositoryEx implements Environ_Repository{
 
     @Override
@@ -26,7 +26,7 @@ public class DataRepositoryEx implements Environ_Repository{
     }
 
     @Override
-    public boolean saveEnvironment(OpenClientSocket openClientSocket) {
+    public boolean saveEnvironment(Environment environment) {
         return false;
     }
 

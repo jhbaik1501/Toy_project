@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Random;
 
-//@Repository
+@Repository
 public class EnvironRepositoryImp implements Environ_Repository{
 
     @Override
@@ -26,12 +26,8 @@ public class EnvironRepositoryImp implements Environ_Repository{
     }
 
     @Override
-    public boolean saveEnvironment(OpenClientSocket openClientSocket) {
-        Environment environment = new Environment();
-        environment.setTime("0533");
-        environment.setTemperature(25);
-        environment.setHumidity(55);
-        environment.setIlluminace(60);
+    public boolean saveEnvironment(Environment environment) {
+
         try {
             setDB.setInfo(environment);
             System.out.println("데이터 넣기 성공!");
@@ -44,7 +40,7 @@ public class EnvironRepositoryImp implements Environ_Repository{
 
     public static class setDB {
         private static final String DRIVER = "com.mysql.jdbc.Driver";
-        private static final String URL = "jdbc:mysql://127.0.0.1:3306/cmdb"; // jdbc:mysql://127.0.0.1:3306/여러분이 만드신 스키마이름
+        private static final String URL = "jdbc:mysql://127.0.0.1:1521/toyproject"; // jdbc:mysql://127.0.0.1:3306/여러분이 만드신 스키마이름
         private static final String USER = "root"; //DB 사용자명
         private static final String PW = "1234";   //DB 사용자 비밀번호
 
@@ -52,9 +48,9 @@ public class EnvironRepositoryImp implements Environ_Repository{
             Class.forName(DRIVER);
 
             try(Connection con = DriverManager.getConnection(URL, USER, PW)){
-                PreparedStatement preparedStatement = con.prepareStatement("select SEQUENCE from environment_set order by SEQUENCE desc limit 1");
-                ResultSet resultSet = preparedStatement.executeQuery();
-
+                PreparedStatement preparedStatement = con.prepareStatement("select * from environment_set order by id desc limit 1");
+                ResultSet resultSet = preparedStatement. executeQuery();
+                resultSet.next();
                 Environment environment = new Environment();
 
                 environment.setHumidity(resultSet.getInt(4));

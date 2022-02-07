@@ -26,6 +26,7 @@ public class controllerTest2 {
     public String getHome(Model model){
         Environment environment = environ_repository.getNowEnvironment();
         model.addAttribute("environment", environment);
+
         return "시간 : " + environment.getTime() + " 습도 : " + environment.getHumidity() + "% 조도 : " +
                 environment.getIlluminace() + "% 온도 : " + environment.getTemperature() + "도 ";
     }
