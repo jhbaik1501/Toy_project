@@ -14,14 +14,14 @@ function App() {
   // 첫 번째 렌더링을 마친 후 실행
   useEffect(
       () => {
-        axios({
-            url: '/home2',
-            method: 'GET'
-        }).then((res) => {
-            callback(res.data);
-        })
+        axios.get('/api/home2')  // http://localhost:5000 안 써줘도 괜찮다.
+          .then(res=> {
+          callback(res.data);
+          console.log(res.data)})
+          .catch()
       }, []
   );
+
 
   return (
       <div className="App">

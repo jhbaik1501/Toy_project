@@ -1,5 +1,6 @@
 package com.example.Toy_project;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
@@ -11,6 +12,8 @@ import java.nio.ByteOrder;
 
 @Component
 public class OpenClientSocket {
+
+    @Autowired Environ_Repository environ_repository;
 
     public void OpenSocket(){
         // 소켓을 선언한다.
@@ -50,6 +53,7 @@ public class OpenClientSocket {
                     // byte형식의 데이터를 string형식으로 변환한다.
                     msg = new String(data, "UTF-8");
                     // 콘솔에 출력한다.
+
                     System.out.println(msg);
                 }
             }

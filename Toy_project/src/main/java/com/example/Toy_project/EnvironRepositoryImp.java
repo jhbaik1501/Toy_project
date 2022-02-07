@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Random;
 
-@Repository
+//@Repository
 public class EnvironRepositoryImp implements Environ_Repository{
 
     @Override

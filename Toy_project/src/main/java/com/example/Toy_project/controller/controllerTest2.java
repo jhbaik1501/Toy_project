@@ -22,7 +22,7 @@ public class controllerTest2 {
     }
 
 
-    @GetMapping("/home2")
+    @GetMapping("/api/home2")
     public String getHome(Model model){
         Environment environment = environ_repository.getNowEnvironment();
         model.addAttribute("environment", environment);

@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Random;
 
-//@Repository
+@Repository
 public class DataRepositoryEx implements Environ_Repository{
 
     @Override
@@ -36,7 +36,7 @@ public class DataRepositoryEx implements Environ_Repository{
 
     public static class setDB {
         private static final String DRIVER = "com.mysql.jdbc.Driver";
-        private static final String URL = "jdbc:mysql://127.0.0.1:3306/cmdb"; // jdbc:mysql://127.0.0.1:3306/여러분이 만드신 스키마이름
+        private static final String URL = "jdbc:mysql://127.0.0.1:1521/toyproject"; // jdbc:mysql://127.0.0.1:3306/여러분이 만드신 스키마이름
         private static final String USER = "root"; //DB 사용자명
         private static final String PW = "1234";   //DB 사용자 비밀번호
 
