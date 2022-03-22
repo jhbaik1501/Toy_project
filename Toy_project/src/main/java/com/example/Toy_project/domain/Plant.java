@@ -1,5 +1,6 @@
 package com.example.Toy_project.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +15,7 @@ public class Plant {
     @Column(name = "plant_id")
     private Long id;
 
-    @JsonManagedReference // 순환참조 방지 -> 이거 이해가 너무 어려움.. 그냥 쓰자.. 다대 일 관계 사용해서 생기는 오류인듯..
+    @JsonBackReference  // 순환참조 방지 -> 이거 이해가 너무 어려움.. 그냥 쓰자.. 다대 일 관계 사용해서 생기는 오류인듯..
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
