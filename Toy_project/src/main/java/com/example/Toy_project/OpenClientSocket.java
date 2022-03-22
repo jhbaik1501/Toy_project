@@ -1,5 +1,8 @@
 package com.example.Toy_project;
 
+import com.example.Toy_project.domain.Environment;
+import com.example.Toy_project.service.EnvironService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -10,14 +13,16 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.time.LocalDateTime;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 @Component
+@RequiredArgsConstructor
 public class OpenClientSocket {
 
-    @Autowired Environ_Repository environ_repository;
+
+    private final EnvironService environService;
     @Scheduled(fixedRate = 100000)
     public void OpenSocket(){
         // 소켓을 선언한다.
@@ -63,14 +68,13 @@ public class OpenClientSocket {
                     int  temperature = jsonObject.getInt("temperature");
                     int  humidity = jsonObject.getInt("humidity");
                     int illumination = jsonObject.getInt("illumination");
-                    System.out.println(jsonObject+"시발");
+                    System.out.println(jsonObject+"HI");
 
-                    environment.setTime(Integer.toString(time));
+                    environment.setTime(LocalDateTime.now());
                     environment.setTemperature(temperature);
                     environment.setHumidity(humidity);
                     environment.setIlluminace(illumination);
-                    environ_repository.saveEnvironment(environment);
-
+                    environService.save(environment);
                     // 콘솔에 출력한다.
                     System.out.println("100초후 실행");
                     System.out.println(msg);
