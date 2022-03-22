@@ -21,6 +21,7 @@ public class PlantService {
     @Transactional
     public boolean save(Plant plant){
 
+        System.out.println(plant.getId() + plant.getUser().getName() +  plant.getSpecies());
         Long userId = plant.getUser().getId();
         if(checkPlantNum(userId)){
             plantRepository.save(plant);

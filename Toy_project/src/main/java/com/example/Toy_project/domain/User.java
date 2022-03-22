@@ -1,5 +1,7 @@
 package com.example.Toy_project.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +18,7 @@ public class User {
     @Column(name = "user_id")
     private Long id;
 
+    @JsonBackReference //순환참조 방지
     @OneToMany(mappedBy = "user")
     private List<Plant> plants = new ArrayList<>();
 

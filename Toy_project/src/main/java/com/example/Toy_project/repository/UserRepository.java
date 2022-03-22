@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -28,12 +29,8 @@ public class UserRepository {
     }
 
     public List<Plant> findUserPlant(Long id){
-        List<Plant> list = em.createQuery(
-                "SELECT U " +
-                        "FROM user U " +
-                        "LEFT JOIN plant P " +
-                        "ON U.user_id = P.user_id" +
-                        "WHERE user_id = " + id)
+        List<Plant> list = em.createQuery("SELECT P FROM Plant P JOIN P.user U WHERE U.id = :id", Plant.class)
+                .setParameter("id", id)
                 .getResultList();
         return list;
     }
